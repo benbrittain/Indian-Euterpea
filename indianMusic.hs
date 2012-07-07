@@ -22,3 +22,13 @@ mkScale p (x:xs) = note qn p :+: mkScale (trans x p) xs
 
 apToHz' :: Floating a => AbsPitch -> AbsPitch -> a -> a
 apToHz' ap sp hz = hz * 2 ** (fromIntegral (ap - sp) /12)
+
+
+
+ssfMelTrills :: Music Pitch
+ssfMelTrills = instrument Sitar $ line (l1 ++ l2 ++ l3 ++ l4)
+    where   l1 = [trilln 2 5 (bf 6 en), ef 7 en, ef 6 en, ef 7 en]
+            l2 = [bf 6 sn, c 7 sn, bf 6 sn, g 6 sn, ef 6 en, bf 5 en]
+            l3 = [ef 6 sn, f 6 sn, g 6 sn, af 6 sn, bf 6 en, ef 7 en]
+            l4 = [trill 2 tn (bf 6 qn), bf 6 sn, denr]
+
