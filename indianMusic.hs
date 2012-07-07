@@ -1,8 +1,5 @@
 import Euterpea
 
---data Scale = Ionian | Dorian | Phrygian | Lydian | Mixolydian | Aeolian | Locrian
---    deriving (Show)
-
 data Modes = Bilawal | Khamaj  | Kafi | Asavari | Bhairavi | Bhairav | Kalyan  | Marva | Purvi | Todi
     deriving (Show)
 
@@ -23,4 +20,5 @@ mkScale :: Pitch -> [Int] -> Music Pitch
 mkScale p []     = note qn p
 mkScale p (x:xs) = note qn p :+: mkScale (trans x p) xs
 
-
+apToHz' :: Floating a => AbsPitch -> AbsPitch -> a -> a
+apToHz' ap sp hz = hz * 2 ** (fromIntegral (ap - sp) /12)
